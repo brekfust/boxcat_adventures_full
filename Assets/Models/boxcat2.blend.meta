@@ -1,0 +1,675 @@
+fileFormatVersion: 2
+guid: b2681ac07f6b37445b5f4e75439f2b8d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BLB
+    100004: BLIK
+    100006: BLknee
+    100008: BLT
+    100010: //RootNode
+    100012: BRB
+    100014: BRIK
+    100016: BRknee
+    100018: BRT
+    100020: butt
+    100022: chest
+    100024: controller
+    100026: Cube
+    100028: Facelook
+    100030: FLB
+    100032: FLIK
+    100034: FLknee
+    100036: FLT
+    100038: FRB
+    100040: FRIK
+    100042: FRknee
+    100044: FRT
+    100046: head
+    100048: neck
+    100050: Plane
+    100052: tail1
+    100054: tail2
+    100056: tail3
+    100058: tailIK
+    100060: tailknee
+    100062: waist
+    400000: Armature
+    400002: BLB
+    400004: BLIK
+    400006: BLknee
+    400008: BLT
+    400010: //RootNode
+    400012: BRB
+    400014: BRIK
+    400016: BRknee
+    400018: BRT
+    400020: butt
+    400022: chest
+    400024: controller
+    400026: Cube
+    400028: Facelook
+    400030: FLB
+    400032: FLIK
+    400034: FLknee
+    400036: FLT
+    400038: FRB
+    400040: FRIK
+    400042: FRknee
+    400044: FRT
+    400046: head
+    400048: neck
+    400050: Plane
+    400052: tail1
+    400054: tail2
+    400056: tail3
+    400058: tailIK
+    400060: tailknee
+    400062: waist
+    2300000: Plane
+    3300000: Plane
+    4300000: Cube
+    4300002: Plane
+    7400000: Default Take
+    7400002: Fall
+    7400004: Idle
+    7400006: new_walk
+    7400008: Pounce_001
+    7400010: TailWhip
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 58
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Fall
+      takeName: Fall
+      firstFrame: 0
+      lastFrame: 58
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: new_walk
+      takeName: new_walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Pounce_001
+      takeName: Pounce_001
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: TailWhip
+      takeName: TailWhip
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Plane
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

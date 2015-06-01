@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.boxcat adventures.CSharp", "UnityVS.boxcat adventures.CSharp.csproj", "{648A97CF-37DE-55DF-4E05-FB9DDF3D1939}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.boxcat adventures.CSharp.Editor", "UnityVS.boxcat adventures.CSharp.Editor.csproj", "{63D96A3B-25CF-492D-881D-F0B9F0442AF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{648A97CF-37DE-55DF-4E05-FB9DDF3D1939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648A97CF-37DE-55DF-4E05-FB9DDF3D1939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648A97CF-37DE-55DF-4E05-FB9DDF3D1939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63D96A3B-25CF-492D-881D-F0B9F0442AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D96A3B-25CF-492D-881D-F0B9F0442AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D96A3B-25CF-492D-881D-F0B9F0442AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D96A3B-25CF-492D-881D-F0B9F0442AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

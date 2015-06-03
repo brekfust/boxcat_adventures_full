@@ -15,13 +15,14 @@ public class EnemyController : MonoBehaviour {
     public Text text2;
     public float shootFireWait = .5f;
     public float SwipeWait = .25f;
+    public GameObject Fireball;
+    public GameObject Player;
 
     float counter = 0f;
     Animator anim;
     AttackType currentAttackState = AttackType.Idle;
     bool inRange = false;
     bool currentlyAttacking = false;
-
 
     // Use this for initialization
 	void Start () {
@@ -90,9 +91,10 @@ public class EnemyController : MonoBehaviour {
     void ExplosionPush(Vector3 bombPos)
     {
         float distance = Vector3.Distance(bombPos, transform.position);
-        rigidbody.AddForce(Vector3.up * (150f - distance), ForceMode.Impulse);
-        rigidbody.AddExplosionForce(Mathf.Pow(150f - distance, 2)/10f, bombPos, 300f, 3f); 
-        
+        rigidbody.AddForce(Vector3.up * (Random.Range(75,150) - distance), ForceMode.Impulse);
+        //rigidbody.AddExplosionForce(Mathf.Pow(150f - distance, 2)/10f, bombPos, 300f, 3f); 
+        //rigidbody.AddExplosionForce(Random.Range(25000,35000), bombPos, 300f);
+        rigidbody.AddForce((rigidbody.transform.position - bombPos).normalized * Random.Range(50,150), ForceMode.Impulse);
     }
     
     IEnumerator ShootFire()
@@ -137,13 +139,58 @@ public class EnemyController : MonoBehaviour {
         counter = 0f;
     }
 
-    void FadeInFireball()
+    IEnumerator ShootFireball()
     {
+        //create fireball, offset puts it above boxwolf
+        Vector3 FireballOffset = new Vector3(0, 12.5f, 0);
+        GameObject FireballClone = (GameObject)Instantiate(Fireball,
+            transform.position + FireballOffset,
+            transform.rotation);
 
+        //wait 30?? frames until animation is "launching" the fireball
+        int i = 0;
+        while (i <= 30)
+        {
+            i++;
+            yield return new WaitForEndOfFrame();
+        }
+
+        //launch fireball towards player, 20 second life. keep going in same direction within 20 units to give space to dodge.
+        float FireballCounter = 0f;
+        Vector3 Direction = (Player.transform.position - FireballClone.transform.position).normalized;
+        bool stopTrackingPlayer = false;
+        while (FireballCounter < 20f)
+        {
+            if (Vector3.Distance(FireballClone.transform.position, Player.transform.position) > 20 && !stopTrackingPlayer)
+            {
+                //this .5f is fireball speed. Make this public when you stop being lazy and separate the attack script
+                Direction = (Player.transform.position - FireballClone.transform.position).normalized * .5f;
+            }
+            else
+            {
+                stopTrackingPlayer = true;
+            }
+            //this if statment brings fireball down to boxcats level and keeps it there.
+            if (FireballClone.transform.position.y >= 4f)
+            {
+                float x = Direction.x;
+                float y = Direction.y - .25f;
+                float z = Direction.z;
+                Direction = new Vector3(x, y, z);
+            }
+            else
+            {
+                float x = Direction.x;
+                float y = 0f;
+                float z = Direction.z;
+                Direction = new Vector3(x, y, z);
+            }
+            //update position and increment fireball lifetime
+            FireballClone.transform.position = (FireballClone.transform.position + Direction);
+            FireballCounter += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(FireballClone);
     }
 
-    void ShootFireball()
-    {
-
-    }
 }

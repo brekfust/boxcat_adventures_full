@@ -20,15 +20,18 @@ public class PlayerMover : MonoBehaviour {
     public Text text2;
     //public GameObject pounceColliderObject;
     //public GameObject whipColliderObject;
+    public float maxHealth = 100f;
 
 	Vector3 movement;
 	Animator anim;
 	Rigidbody playerRigidbody;
     Collider pounceCollider;
     Collider whipCollider;
+    float currentHealth;
     bool canWalk;
     bool isAttacking = false;
     float pounceTimer = 0f;
+    bool dead = false;
 
 
 
@@ -36,14 +39,16 @@ public class PlayerMover : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator> ();
 		playerRigidbody = GetComponent<Rigidbody> ();
-        //pounceCollider = pounceColliderObject.GetComponent<Collider>();
-        //whipCollider = whipColliderObject.GetComponent<Collider>();
-        Debug.Log("Changed script!");
+        currentHealth = maxHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        if (currentHealth <= 0)
+            Die();
+        if (dead)
+            return;
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
         float pounce = Input.GetAxisRaw("Fire1");
@@ -190,5 +195,17 @@ public class PlayerMover : MonoBehaviour {
         Quaternion rotate = Quaternion.Inverse(Quaternion.LookRotation(bombPos));
         playerRigidbody.AddTorque(rotate.eulerAngles);
         playerRigidbody.AddForce(rotate.eulerAngles * distance * 100000);
+    }
+    
+    void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+    }
+
+    void Die()
+    {
+        Debug.Log("Your dead. Omg.");
+        canWalk = false;
+        dead = true;
     }
 }

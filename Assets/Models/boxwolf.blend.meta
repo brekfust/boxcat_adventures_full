@@ -556,7 +556,7 @@ ModelImporter:
       curves: []
       events:
       - time: .15466547
-        functionName: FadeInFireball
+        functionName: ShootFireball
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -564,13 +564,6 @@ ModelImporter:
         messageOptions: 0
       - time: .99904269
         functionName: EndShootFire
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: .534988642
-        functionName: ShootFireball
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

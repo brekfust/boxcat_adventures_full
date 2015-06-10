@@ -8,21 +8,24 @@ public class EnemyController : MonoBehaviour {
     {
         ShootFire,
         Swipe,
+        InSwipeRange,
         Idle
     }
 
-    public Text text1;
-    public Text text2;
+    public float speed = 25f;
     public float shootFireWait = .5f;
     public float SwipeWait = .25f;
     public GameObject Fireball;
     public GameObject Player;
+    public GameObject Heliboxcat;
 
     float counter = 0f;
     Animator anim;
     AttackType currentAttackState = AttackType.Idle;
     bool inRange = false;
     bool currentlyAttacking = false;
+    bool canWalk = true;
+    
 
     // Use this for initialization
 	void Start () {
@@ -33,22 +36,38 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         counter += Time.deltaTime;
-        text2.text = currentlyAttacking.ToString();
         //Attack (Or don't) based on currentAttackState and whether the timer for that attack allows it.
+        TurnTowardsPlayer();
         switch (currentAttackState)
         {
             case AttackType.ShootFire:
-                text1.text = "ShootFire";
                 if (counter >= shootFireWait)
                     StartCoroutine("ShootFire");
                 break;
             case AttackType.Swipe:
-                text1.text = "Swipe";
+                float DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+                Debug.Log(DistanceToPlayer.ToString());
+                //check if we're allowed to walk, and not too close already
+                if (canWalk)
+                {
+                    anim.SetBool("isWalking", true);
+                    WalkTowardPlayer();
+                }
+                else
+                {
+                    anim.SetBool("isWalking", false);
+                }
+                //must be within striking distance
+
+                break;
+            case AttackType.InSwipeRange:
                 if (counter >= SwipeWait)
+                {
                     StartCoroutine("Swipe");
+                    canWalk = false;
+                }
                 break;
             case AttackType.Idle:
-                text1.text = "Idle";
                 break;
             default:
                 break;
@@ -56,8 +75,23 @@ public class EnemyController : MonoBehaviour {
 
 	}
 
+    void WalkTowardPlayer()
+    {
+        Vector3 Direction = (Player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+        rigidbody.MovePosition(transform.position + Direction);
+    }
+
+    void TurnTowardsPlayer()
+    {
+        if (CameraFollow.currentForm == "Player")
+            transform.LookAt(Player.transform.position);
+        if (CameraFollow.currentForm == "Heliboxcat")
+            transform.LookAt(Heliboxcat.transform.position, Vector3.up);
+    }
+
     //Controls currentAttackState. Only go Idle while exiting shoot range.
     //looks like we don't need isPlayerInside, remove it and simplify this.
+
     public void AttackState(AttackType type, bool isPlayerInside)
     {
         currentAttackState = type;
@@ -67,12 +101,25 @@ public class EnemyController : MonoBehaviour {
         }
         else
         {
-            currentAttackState = AttackType.ShootFire;
-            if (type == AttackType.ShootFire)
+            //if isPlayerInside was false, choose which state we should be in
+            switch (type)
             {
-                currentAttackState = AttackType.Idle;
-                inRange = false;
+                case AttackType.InSwipeRange:
+                    currentAttackState = AttackType.Swipe;
+                    break;
+                case AttackType.Swipe:
+                    currentAttackState = AttackType.ShootFire;
+                    break;
+                case AttackType.ShootFire:
+                    currentAttackState = AttackType.Idle;
+                    break;
             }
+            //currentAttackState = AttackType.ShootFire;
+            //if (type == AttackType.ShootFire)
+            //{
+            //    currentAttackState = AttackType.Idle;
+            //    inRange = false;
+            //}
         }
     }
 
@@ -130,6 +177,7 @@ public class EnemyController : MonoBehaviour {
     void EndSwipe()
     {
         currentlyAttacking = false;
+        canWalk = true;
         counter = 0f;
     }
     
@@ -139,7 +187,7 @@ public class EnemyController : MonoBehaviour {
         counter = 0f;
     }
 
-    IEnumerator ShootFireball()
+    void ShootFireball()
     {
         //create fireball, offset puts it above boxwolf
         Vector3 FireballOffset = new Vector3(0, 12.5f, 0);
@@ -147,50 +195,7 @@ public class EnemyController : MonoBehaviour {
             transform.position + FireballOffset,
             transform.rotation);
 
-        //wait 30?? frames until animation is "launching" the fireball
-        int i = 0;
-        while (i <= 30)
-        {
-            i++;
-            yield return new WaitForEndOfFrame();
-        }
-
-        //launch fireball towards player, 20 second life. keep going in same direction within 20 units to give space to dodge.
-        float FireballCounter = 0f;
-        Vector3 Direction = (Player.transform.position - FireballClone.transform.position).normalized;
-        bool stopTrackingPlayer = false;
-        while (FireballCounter < 20f)
-        {
-            if (Vector3.Distance(FireballClone.transform.position, Player.transform.position) > 20 && !stopTrackingPlayer)
-            {
-                //this .5f is fireball speed. Make this public when you stop being lazy and separate the attack script
-                Direction = (Player.transform.position - FireballClone.transform.position).normalized * .5f;
-            }
-            else
-            {
-                stopTrackingPlayer = true;
-            }
-            //this if statment brings fireball down to boxcats level and keeps it there.
-            if (FireballClone.transform.position.y >= 4f)
-            {
-                float x = Direction.x;
-                float y = Direction.y - .25f;
-                float z = Direction.z;
-                Direction = new Vector3(x, y, z);
-            }
-            else
-            {
-                float x = Direction.x;
-                float y = 0f;
-                float z = Direction.z;
-                Direction = new Vector3(x, y, z);
-            }
-            //update position and increment fireball lifetime
-            FireballClone.transform.position = (FireballClone.transform.position + Direction);
-            FireballCounter += Time.deltaTime;
-            yield return null;
-        }
-        Destroy(FireballClone);
+        
     }
 
 }

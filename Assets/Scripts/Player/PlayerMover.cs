@@ -13,7 +13,7 @@ public class PlayerMover : MonoBehaviour {
     public static bool isPouncing;
     public static bool isWhipping;
     
-    public float speed = 6f;
+    public float speed = 15f;
     public float gravity = 5f;
     public float pounceSpeed = 30f;
     public Text text1;
@@ -32,6 +32,7 @@ public class PlayerMover : MonoBehaviour {
     bool isAttacking = false;
     float pounceTimer = 0f;
     bool dead = false;
+    float walkValue;
 
 
 
@@ -40,20 +41,29 @@ public class PlayerMover : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		playerRigidbody = GetComponent<Rigidbody> ();
         currentHealth = maxHealth;
+        walkValue = speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (currentHealth <= 0)
-            Die();
         if (dead)
             return;
+        if (currentHealth <= 0)
+            Die();
+
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
         float pounce = Input.GetAxisRaw("Fire1");
         float whip = Input.GetAxisRaw("Jump");
-
+        bool run = Input.GetKey(KeyCode.LeftShift);
+        if(run)
+        {
+            speed = walkValue*2f;
+        }
+        else
+        {
+            speed = walkValue;
+        }
         text1.text = isWhipping.ToString();
         text2.text = isAttacking.ToString();
         //determine if we're allowed to move

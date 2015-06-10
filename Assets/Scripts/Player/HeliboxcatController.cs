@@ -113,4 +113,9 @@ public class HeliboxcatController : MonoBehaviour {
         //Debug.Log(rotate.eulerAngles);
         //Debug.Log(distance);
     }
+
+    void TakeDamage()
+    {
+        //placeholder
+    }
 }

@@ -9,9 +9,11 @@ public class EnemyController : MonoBehaviour {
         ShootFire,
         Swipe,
         InSwipeRange,
+		InSwipeDamage,
         Idle
     }
 
+    public Text text1;
     public float speed = 25f;
     public float shootFireWait = .5f;
     public float SwipeWait = .25f;
@@ -25,6 +27,7 @@ public class EnemyController : MonoBehaviour {
     bool inRange = false;
     bool currentlyAttacking = false;
     bool canWalk = true;
+	bool inSwipeDamageRange = false;
     
 
     // Use this for initialization
@@ -35,6 +38,7 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        text1.text = currentAttackState.ToString();
         counter += Time.deltaTime;
         //Attack (Or don't) based on currentAttackState and whether the timer for that attack allows it.
         TurnTowardsPlayer();
@@ -46,7 +50,6 @@ public class EnemyController : MonoBehaviour {
                 break;
             case AttackType.Swipe:
                 float DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-                Debug.Log(DistanceToPlayer.ToString());
                 //check if we're allowed to walk, and not too close already
                 if (canWalk)
                 {
@@ -61,7 +64,7 @@ public class EnemyController : MonoBehaviour {
 
                 break;
             case AttackType.InSwipeRange:
-                if (counter >= SwipeWait)
+                if (counter >= SwipeWait && !currentlyAttacking)
                 {
                     StartCoroutine("Swipe");
                     canWalk = false;
@@ -94,7 +97,20 @@ public class EnemyController : MonoBehaviour {
 
     public void AttackState(AttackType type, bool isPlayerInside)
     {
-        currentAttackState = type;
+        //toggle swipe damage bool, using same method but kinda separate. So lazy
+		if (type == AttackType.InSwipeDamage && isPlayerInside) 
+		{
+			inSwipeDamageRange = true;
+			return;
+		}
+		if (type == AttackType.InSwipeDamage && !isPlayerInside) 
+		{
+			inSwipeDamageRange = false;
+			return;
+		}
+
+		//the actual "state machine"
+		currentAttackState = type;
         if (isPlayerInside)
         {
             inRange = true;
@@ -174,11 +190,37 @@ public class EnemyController : MonoBehaviour {
 
     }
 
+	IEnumerator SwipeDash()
+	{
+		//bool forwardDashCompleted = false;
+		Vector3 dashDirection = (Player.transform.position - transform.position).normalized;
+		int dashRange = 20;
+		int i = 0;
+		float modifier = 1.5f;
+		bool alreadyDamaged = false;
+		while (i <= dashRange) 
+		{
+			rigidbody.MovePosition(transform.position + dashDirection * modifier);
+			if (inSwipeDamageRange && !alreadyDamaged)
+			{
+				alreadyDamaged = true;
+				Player.SendMessage("TakeDamage", 10);
+			}
+			i++;
+			yield return null;
+		}
+		//move one last time to even it up
+		//rigidbody.MovePosition (transform.position + Vector3.forward * modifier);
+		//yield return null;
+
+	}
+
     void EndSwipe()
     {
         currentlyAttacking = false;
         canWalk = true;
         counter = 0f;
+        Debug.Log("Swipe Ended");
     }
     
     void EndShootFire()

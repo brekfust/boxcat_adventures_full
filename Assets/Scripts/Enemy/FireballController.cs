@@ -20,7 +20,7 @@ public class FireballController : MonoBehaviour {
     {
         if (other.tag == "Player" && alreadyDamaged == false)
         {
-            other.SendMessage("TakeDamage", 25f);
+            other.SendMessage("TakeDamage", 10f);
             Destroy(transform.parent.gameObject);
             
         }
@@ -39,6 +39,7 @@ public class FireballController : MonoBehaviour {
         //launch fireball towards player, 20 second life. keep going in same direction within 20 units to give space to dodge.
         float FireballCounter = 0f;
         Vector3 Direction = (Player.transform.position - transform.parent.transform.position).normalized;
+        
         bool stopTrackingPlayer = false;
         while (FireballCounter < 20f)
         {
@@ -76,6 +77,6 @@ public class FireballController : MonoBehaviour {
             FireballCounter += Time.deltaTime;
             yield return null;
         }
-        //Destroy(transform.parent.gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

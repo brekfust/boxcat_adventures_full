@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour {
     bool currentlyAttacking = false;
     bool canWalk = true;
 	bool inSwipeDamageRange = false;
+    bool canAttack = true;
     
 
     // Use this for initialization
@@ -45,7 +46,7 @@ public class EnemyController : MonoBehaviour {
         switch (currentAttackState)
         {
             case AttackType.ShootFire:
-                if (counter >= shootFireWait)
+                if (counter >= shootFireWait && canAttack && !currentlyAttacking)
                     StartCoroutine("ShootFire");
                 break;
             case AttackType.Swipe:
@@ -64,7 +65,7 @@ public class EnemyController : MonoBehaviour {
 
                 break;
             case AttackType.InSwipeRange:
-                if (counter >= SwipeWait && !currentlyAttacking)
+                if (counter >= SwipeWait && !currentlyAttacking && canAttack)
                 {
                     StartCoroutine("Swipe");
                     canWalk = false;
@@ -80,16 +81,35 @@ public class EnemyController : MonoBehaviour {
 
     void WalkTowardPlayer()
     {
-        Vector3 Direction = (Player.transform.position - transform.position).normalized * speed * Time.deltaTime;
-        rigidbody.MovePosition(transform.position + Direction);
+        if (currentlyAttacking == false)
+        {
+            Vector3 Direction = (Player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+            rigidbody.MovePosition(transform.position + Direction);
+        }
     }
 
     void TurnTowardsPlayer()
     {
+        Vector3 lookDirection;
         if (CameraFollow.currentForm == "Player")
-            transform.LookAt(Player.transform.position);
+        {
+            //example code from unityanswers
+            //var lookPos = target.position - transform.position;
+            //lookPos.y = 0;
+            //var rotation = Quaternion.LookRotation(lookPos);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+
+            lookDirection = Player.transform.position;
+            lookDirection = new Vector3(lookDirection.x, transform.position.y, lookDirection.z);
+            transform.LookAt(lookDirection);
+        }
         if (CameraFollow.currentForm == "Heliboxcat")
-            transform.LookAt(Heliboxcat.transform.position, Vector3.up);
+        {
+            //transform.LookAt(Heliboxcat.transform.position, Vector3.up);
+            lookDirection = Heliboxcat.transform.position;
+            lookDirection = new Vector3(lookDirection.x, transform.position.y, lookDirection.z);
+            transform.LookAt(lookDirection);
+        }
     }
 
     //Controls currentAttackState. Only go Idle while exiting shoot range.
@@ -167,6 +187,7 @@ public class EnemyController : MonoBehaviour {
         {
                 anim.SetTrigger("isShooting");
                 currentlyAttacking = true;
+                canWalk = false;
         }
         else
         {
@@ -177,7 +198,7 @@ public class EnemyController : MonoBehaviour {
 
     IEnumerator Swipe()
     {
-        if (!currentlyAttacking)
+        if (!currentlyAttacking && canAttack)
         {
             anim.SetTrigger("isSwiping");
             currentlyAttacking = true;
@@ -200,7 +221,8 @@ public class EnemyController : MonoBehaviour {
 		bool alreadyDamaged = false;
 		while (i <= dashRange) 
 		{
-			rigidbody.MovePosition(transform.position + dashDirection * modifier);
+			if (currentAttackState != AttackType.InSwipeDamage)
+                rigidbody.MovePosition(transform.position + dashDirection * modifier);
 			if (inSwipeDamageRange && !alreadyDamaged)
 			{
 				alreadyDamaged = true;
@@ -220,11 +242,11 @@ public class EnemyController : MonoBehaviour {
         currentlyAttacking = false;
         canWalk = true;
         counter = 0f;
-        Debug.Log("Swipe Ended");
     }
     
     void EndShootFire()
     {
+        canWalk = true;
         currentlyAttacking = false;
         counter = 0f;
     }
@@ -240,4 +262,19 @@ public class EnemyController : MonoBehaviour {
         
     }
 
+    void StartDamage()
+    {
+        StopAllCoroutines();
+        currentlyAttacking = false;
+        canWalk = false;
+        canAttack = false;
+        Debug.Log("Sensed Damage");
+    }
+
+    void EndDamage()
+    {
+        counter = 0f;
+        canWalk = true;
+        canAttack = true;
+    }
 }

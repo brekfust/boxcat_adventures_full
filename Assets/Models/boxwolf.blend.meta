@@ -74,6 +74,7 @@ ModelImporter:
     7400010: SpitFire
     7400012: Swipe
     7400014: TailWhip
+    7400016: Damaged
     9500000: //RootNode
     13700000: Cube
   materials:
@@ -759,6 +760,108 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/controller
+        weight: 1
+      - path: Armature/controller/BLIK
+        weight: 1
+      - path: Armature/controller/BLknee
+        weight: 1
+      - path: Armature/controller/BRIK
+        weight: 1
+      - path: Armature/controller/BRknee
+        weight: 1
+      - path: Armature/controller/butt
+        weight: 1
+      - path: Armature/controller/butt/BLT
+        weight: 1
+      - path: Armature/controller/butt/BLT/BLB
+        weight: 1
+      - path: Armature/controller/butt/BRT
+        weight: 1
+      - path: Armature/controller/butt/BRT/BRB
+        weight: 1
+      - path: Armature/controller/butt/FLT
+        weight: 1
+      - path: Armature/controller/butt/FLT/FLB
+        weight: 1
+      - path: Armature/controller/butt/FRT
+        weight: 1
+      - path: Armature/controller/butt/FRT/FRB
+        weight: 1
+      - path: Armature/controller/butt/tail1
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2
+        weight: 1
+      - path: Armature/controller/butt/tail1/tail2/tail3
+        weight: 1
+      - path: Armature/controller/butt/waist
+        weight: 1
+      - path: Armature/controller/butt/waist/chest
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck
+        weight: 1
+      - path: Armature/controller/butt/waist/chest/neck/head
+        weight: 1
+      - path: Armature/controller/Facelook
+        weight: 1
+      - path: Armature/controller/FLIK
+        weight: 1
+      - path: Armature/controller/FLknee
+        weight: 1
+      - path: Armature/controller/FRIK
+        weight: 1
+      - path: Armature/controller/FRknee
+        weight: 1
+      - path: Armature/controller/tailIK
+        weight: 1
+      - path: Armature/controller/tailknee
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Damaged
+      takeName: Damaged
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: StartDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .931989908
+        functionName: EndDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

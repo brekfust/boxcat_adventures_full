@@ -18,6 +18,7 @@ public class PlayerMover : MonoBehaviour {
     public float pounceSpeed = 30f;
     public Text text1;
     public Text text2;
+    public Text healthText;
     //public GameObject pounceColliderObject;
     //public GameObject whipColliderObject;
     public float maxHealth = 100f;
@@ -46,6 +47,7 @@ public class PlayerMover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        healthText.text = "Health: " + currentHealth.ToString();
         if (dead)
             return;
         if (currentHealth <= 0)
@@ -210,8 +212,14 @@ public class PlayerMover : MonoBehaviour {
     void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        anim.SetTrigger("isDamaged");
+        canWalk = false;
     }
 
+    void EndDamage()
+    {
+        canWalk = true;
+    }
     void Die()
     {
         Debug.Log("Your dead. Omg.");

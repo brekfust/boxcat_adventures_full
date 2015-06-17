@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour {
     //public GameObject whipColliderObject;
     public float currentHealth = 100f;
 
+    Animator anim;
     //Collider pounceCollider;
     //Collider whipCollider;
     //bool alreadyPounced = false;
@@ -19,6 +20,7 @@ public class EnemyHealth : MonoBehaviour {
 	void Start () {
         //pounceCollider = pounceColliderObject.GetComponent<Collider>();
         //whipCollider = whipColliderObject.GetComponent<Collider>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -45,8 +47,13 @@ public class EnemyHealth : MonoBehaviour {
     void TakeDamage(float hurt)
     {
         currentHealth -= hurt;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0f)
+        {
             Die();
+        }
+        else
+        {
+            anim.SetTrigger("isDamaged");
+        }
     }
 }
